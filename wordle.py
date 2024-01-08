@@ -1,3 +1,9 @@
+import random
+import json
+
+with open('words.json') as wordList:
+  file_contents = wordList.read()
+
 def errorMsg(enter): #@ defines a function for an error message
     if not enter.isalpha(): #Error message if word is not within alphabet
         print("The word must contain all letters, try again\n")
@@ -7,10 +13,14 @@ def errorMsg(enter): #@ defines a function for an error message
         print("The word must be 5 characters, try again\n")
         enter = input("Choose a 5 letter word:")
         errorMsg(enter)
+    if not enter in json.loads(file_contents):
+        print("That is not a real word")
+        enter = input("Choose a 5 letter word:")
+        errorMsg(enter)
         
 def gameLoop():
     print("The first player will choose a five letter word")
-    word = input("Choose a 5 letter word:")
+    word = json.loads(file_contents)[random.randint(0, len(json.loads(file_contents)))]
 
     errorMsg(word) #calls the error message
 
@@ -19,6 +29,7 @@ def gameLoop():
     r = 0
     found = [False, False, False, False, False]
     while guess != word and r < 6:
+        found = [False, False, False, False, False]
         guess = input("Enter a 5 letter word:")
         errorMsg(guess) #calls the error message
         for i in range(5): #runs this sequence once for each letter
@@ -37,10 +48,11 @@ def gameLoop():
                 if not yellow: # if it is not yellow
                     print("No Match")
         r += 1
+    print(f"The word was {word}")
+    print("Would you like to play again with a diffrent word (YES or NO)")
+    answer = input("Answer:")
+    if answer == "YES":
+        gameLoop()
 
 print("Welcome to wordle")
 gameLoop()
-print("Would you like to play again with a diffrent word (YES or NO)")
-answer = input("Answer:")
-if answer == "YES":
-    gameLoop()
