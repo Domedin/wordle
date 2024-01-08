@@ -17,14 +17,13 @@ def errorMsg(enter): #@ defines a function for an error message
         print("That is not a real word")
         enter = input("Choose a 5 letter word:")
         errorMsg(enter)
-        
+
 def gameLoop():
-    print("The first player will choose a five letter word")
     word = json.loads(file_contents)[random.randint(0, len(json.loads(file_contents)))]
 
     errorMsg(word) #calls the error message
 
-    print("\nNow player 2 enter a 5 letter word as a guess")
+    print("\nNow player enter a 5 letter word as a guess")
     guess = ""
     r = 0
     found = [False, False, False, False, False]
