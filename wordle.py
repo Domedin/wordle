@@ -46,7 +46,8 @@ def gameLoop():
                         break
                 if not yellow: # if it is not yellow
                     print("No Match")
-                    badGuess.append(guess[i])
+                    if not guess[i] in badGuess:
+                        badGuess.append(guess[i])
         print("The wrong letters are: ",badGuess)
         print()
         r += 1
