@@ -58,7 +58,7 @@ def gameLoop():
     print(f"The word was {word}")
     print("Would you like to play again with a diffrent word (YES or NO)")
     answer = input("Answer:")
-    if answer == "YES":
+    if answer == "YES" or "yes" or "Yes":
         gameLoop()
 
 print("Welcome to wordle")
