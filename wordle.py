@@ -8,15 +8,15 @@ def errorMsg(enter): #@ defines a function for an error message
     if not enter.isalpha(): #Error message if word is not within alphabet
         print("The word must contain all letters, try again\n")
         enter = input("Choose a 5 letter word:")
-        errorMsg(enter)
+        enter = errorMsg(enter)
     if len(enter) != 5 :  # Error message if word is not 5 letters
         print("The word must be 5 characters, try again\n")
         enter = input("Choose a 5 letter word:")
-        errorMsg(enter)
+        enter = errorMsg(enter)
     if not enter in json.loads(file_contents):
         print("That is not a real word")
         enter = input("Choose a 5 letter word:")
-        errorMsg(enter)
+        enter = errorMsg(enter)
     return enter
 
 def gameLoop():
