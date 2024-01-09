@@ -30,7 +30,7 @@ def gameLoop():
     while guess != word and r < 6:
         found = [False, False, False, False, False]
         guess = errorMsg(input("Enter a 5 letter word:"))
-        
+
         for i in range(5): #runs this sequence once for each letter
             if guess[i] == word[i]: # if the guess is the same letter as the word print that
                 print("The letter", guess[i], " in spot ", str(i + 1), "matches letter in correct spot")
@@ -48,7 +48,9 @@ def gameLoop():
                     print("No Match")
                     if not guess[i] in badGuess:
                         badGuess.append(guess[i])
+        print()
         print("The wrong letters are: ",badGuess)
+        print(f"That was guess {r+1}")
         print()
         r += 1
     print(f"The word was {word}")
