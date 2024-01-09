@@ -53,6 +53,8 @@ def gameLoop():
         print(f"That was guess {r+1}")
         print()
         r += 1
+        if guess == word:
+            print("YOU WIN!")
     print(f"The word was {word}")
     print("Would you like to play again with a diffrent word (YES or NO)")
     answer = input("Answer:")
