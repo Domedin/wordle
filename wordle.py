@@ -20,7 +20,7 @@ def errorMsg(enter): #@ defines a function for an error message
 
 def gameLoop():
     word = json.loads(file_contents)[random.randint(0, len(json.loads(file_contents)))]
-
+    badGuess = []
     errorMsg(word) #calls the error message
 
     print("\nNow player enter a 5 letter word as a guess")
@@ -46,6 +46,9 @@ def gameLoop():
                         break
                 if not yellow: # if it is not yellow
                     print("No Match")
+                    badGuess.append(guess[i])
+        print("The wrong letters are: ",badGuess)
+        print()
         r += 1
     print(f"The word was {word}")
     print("Would you like to play again with a diffrent word (YES or NO)")
