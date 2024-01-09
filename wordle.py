@@ -17,11 +17,11 @@ def errorMsg(enter): #@ defines a function for an error message
         print("That is not a real word")
         enter = input("Choose a 5 letter word:")
         errorMsg(enter)
+    return enter
 
 def gameLoop():
     word = json.loads(file_contents)[random.randint(0, len(json.loads(file_contents)))]
     badGuess = []
-    errorMsg(word) #calls the error message
 
     print("\nNow player enter a 5 letter word as a guess")
     guess = ""
@@ -29,8 +29,8 @@ def gameLoop():
     found = [False, False, False, False, False]
     while guess != word and r < 6:
         found = [False, False, False, False, False]
-        guess = input("Enter a 5 letter word:")
-        errorMsg(guess) #calls the error message
+        guess = errorMsg(input("Enter a 5 letter word:"))
+        
         for i in range(5): #runs this sequence once for each letter
             if guess[i] == word[i]: # if the guess is the same letter as the word print that
                 print("The letter", guess[i], " in spot ", str(i + 1), "matches letter in correct spot")
